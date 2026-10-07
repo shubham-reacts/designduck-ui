@@ -1,0 +1,78 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "designduck",
+  "homepage": "https://designduck.vercel.app",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Button with variants (default, destructive, outline, secondary, ghost, link), sizes, asChild, and a loading state that disables it and sets aria-busy.",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/button/components/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "use-debounce",
+      "type": "registry:hook",
+      "title": "useDebounce",
+      "description": "React hook that returns a value only after it has stopped changing for a delay in ms (default 300). Use for search inputs and expensive effects.",
+      "files": [
+        {
+          "path": "registry/new-york/use-debounce/hooks/use-debounce.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "login-01",
+      "type": "registry:block",
+      "title": "Login 01",
+      "description": "Email and password sign-in card with labeled fields, autocomplete hints and a loading submit button. Installs a /login page and a LoginForm component with an onSubmit prop.",
+      "registryDependencies": [
+        "@designduck/button",
+        "card",
+        "input",
+        "label"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/login-01/page.tsx",
+          "type": "registry:page",
+          "target": "app/login/page.tsx"
+        },
+        {
+          "path": "registry/new-york/login-01/components/login-form.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "designduck-theme",
+      "type": "registry:theme",
+      "title": "Designduck Theme",
+      "description": "Minimal neutral color tokens with a single blue accent for light and dark mode, plus a 0.5rem radius. Install to re-skin any shadcn components via CSS variables.",
+      "cssVars": {
+        "light": {
+          "primary": "oklch(0.546 0.245 262.881)",
+          "primary-foreground": "oklch(0.985 0 0)",
+          "ring": "oklch(0.546 0.245 262.881)",
+          "radius": "0.5rem"
+        },
+        "dark": {
+          "primary": "oklch(0.707 0.165 254.624)",
+          "primary-foreground": "oklch(0.145 0 0)",
+          "ring": "oklch(0.707 0.165 254.624)"
+        }
+      }
+    }
+  ]
+}
