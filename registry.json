@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "designduck",
-  "homepage": "https://designduck.vercel.app",
+  "homepage": "https://designduck-ui.vercel.app",
   "items": [
     {
       "name": "button",
