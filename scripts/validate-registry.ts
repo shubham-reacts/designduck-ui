@@ -32,6 +32,8 @@ for (const item of registry.data.items) {
     }
     if ((file.type === "registry:page" || file.type === "registry:file") && !file.target)
       errors.push(`${item.name}: ${file.path} needs a target`)
+    if ("content" in file)
+      errors.push(`${item.name}: ${file.path} embeds content; registry index forbids it`)
     const src = fs.readFileSync(full, "utf8")
     if (/from\s+["']\.\.?\//.test(src))
       errors.push(`${item.name}: ${file.path} uses a relative import; use @/registry/...`)

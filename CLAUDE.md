@@ -25,7 +25,9 @@ Next.js App Router, TypeScript, Tailwind v4, Radix `new-york` style, **bun** (no
 - Namespace key keeps the `@`: `"registries": {"@designduck": "https://host/r/{name}.json"}`. `shadcn registry add "@ns=url"` writes it.
 - `search` and `list` are the same command. `build` rejects invalid item types.
 - `shadcn/schema` exports `registrySchema` and `registryItemSchema` for the validate script.
-- Not yet verified: version-pinned `registryDependencies` (`ns/item#v1`). Test before using.
+- `shadcn mcp init --client claude` writes `.mcp.json` with `npx shadcn@latest mcp`; the server reads namespaces from the consumer's `components.json`. We ship no MCP server.
+- `acme/ui/button#v1.2.0` (seen in the item docs) looks like GitHub-registry syntax (`owner/repo/item#ref`), not namespace syntax. Not verified; don't use `#ref` on `@designduck/...` dependencies. The repo is a valid GitHub registry too (`registry.json` at root), so `shadcn add <owner>/<repo>/<item>` should work once it is public.
+- Registry index (https://ui.shadcn.com/docs/registry/registry-index): open a PR to `shadcn-ui/ui` editing `apps/v4/registry/directory.json`, run `pnpm validate:registries` there. Requires: open source, public, valid schema, flat layout (`registry.json` and `<name>.json` at the registry root, i.e. `/r/`), no `content` in `registry.json` files. Only `@namespace` registries need listing.
 
 ## Conventions
 - Own items in `registryDependencies` use `@designduck/<name>`; stock shadcn items use the bare name (`card`).

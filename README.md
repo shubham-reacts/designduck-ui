@@ -22,6 +22,10 @@ npx shadcn@latest add https://designduck.vercel.app/r/button.json
 
 Browse items and previews on the site, or run `npx shadcn@latest search @designduck`.
 
+## Use with an AI agent (MCP)
+
+After adding the namespace, run `npx shadcn@latest mcp init --client claude` in your project. This writes a `.mcp.json` entry for the shadcn MCP server, which can then browse and install `@designduck` items.
+
 ## Develop
 
 Uses bun.
