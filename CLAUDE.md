@@ -7,7 +7,7 @@ Public shadcn-style component registry. Consumers run `npx shadcn add @designduc
 - Never add a co-author line (`Co-Authored-By`) or any tool attribution to commit messages. Messages are plain, written as the user's own.
 
 ## Stack
-Next.js App Router, TypeScript, Tailwind v4, Radix `new-york` style, **bun** (not pnpm). `shadcn` CLI pinned exactly in `package.json` (3.8.5); run it as `bunx --bun shadcn <cmd>`. Bump the pin deliberately and re-run the install test.
+Next.js App Router, TypeScript, Tailwind v4, Radix `new-york` style, **bun** (not pnpm), Node 22 (`.nvmrc`, `engines`). `shadcn` CLI pinned exactly in `package.json` (3.8.5); run it as `bunx --bun shadcn <cmd>`. Bump the pin deliberately and re-run the install test.
 
 ## Architecture
 - Single root `registry.json` (`name: designduck`). Switch to `include` at roughly 25-30 items.
@@ -23,6 +23,7 @@ Next.js App Router, TypeScript, Tailwind v4, Radix `new-york` style, **bun** (no
 
 ## Verified CLI facts (shadcn 3.8.5)
 - Namespace key keeps the `@`: `"registries": {"@designduck": "https://host/r/{name}.json"}`. `shadcn registry add "@ns=url"` writes it.
+- `shadcn registry add` does not overwrite an existing namespace entry; edit `components.json` by hand to change a URL.
 - `search` and `list` are the same command. `build` rejects invalid item types.
 - `shadcn/schema` exports `registrySchema` and `registryItemSchema` for the validate script.
 - `shadcn mcp init --client claude` writes `.mcp.json` with `npx shadcn@latest mcp`; the server reads namespaces from the consumer's `components.json`. We ship no MCP server.
@@ -56,4 +57,4 @@ Next.js App Router, TypeScript, Tailwind v4, Radix `new-york` style, **bun** (no
 - New item checklist addition: add a preview in `components/previews/index.tsx` (optional for themes).
 - Phase 3 code done (not yet deployed): `bun run registry:validate` (`scripts/validate-registry.ts`: schema, kebab-case, description length, files exist, targets, no relative or docs-site imports, own-namespace deps exist, built output not stale), `bun run test:install` (`scripts/test-install.sh`: every item via namespace and URL into a fresh Next app, then tsc and next build), `/r/*` cache and CORS headers in `next.config.ts`, `.github/workflows/ci.yml` (PR, main, nightly).
 - Next: Vercel deploy (needs Vercel CLI or dashboard import; set `NEXT_PUBLIC_REGISTRY_URL`, update `homepage`), then Phase 4 MCP and registry index.
-- Placeholder: `homepage` is `https://designduck.vercel.app`; set the real URL after the first deploy (or set `NEXT_PUBLIC_REGISTRY_URL`).
+- Placeholder: `homepage` is `https://designduck-ui.vercel.app`; live at that URL (production, Vercel project `designduck-ui`); override with `NEXT_PUBLIC_REGISTRY_URL`.

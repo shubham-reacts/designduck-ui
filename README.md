@@ -8,7 +8,7 @@ Add the namespace to your project's `components.json`:
 
 ```json
 "registries": {
-  "@designduck": "https://designduck.vercel.app/r/{name}.json"
+  "@designduck": "https://designduck-ui.vercel.app/r/{name}.json"
 }
 ```
 
@@ -17,7 +17,7 @@ Then install any item:
 ```bash
 npx shadcn@latest add @designduck/button
 # or directly by URL
-npx shadcn@latest add https://designduck.vercel.app/r/button.json
+npx shadcn@latest add https://designduck-ui.vercel.app/r/button.json
 ```
 
 Browse items and previews on the site, or run `npx shadcn@latest search @designduck`.
